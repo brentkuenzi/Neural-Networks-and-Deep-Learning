@@ -7,9 +7,14 @@ Neural nets use training examples to automatically infer rules for recognizing h
 - Type of artificial neuron
 - Not as commonly used as compared to sigmoid neurons
 
-A perceptron takes several binary inputs, ![img1](http://www.sciweavers.org/tex2img.php?eq=x_1%2C%20x_2%2C%20%5Cldots&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0) and produces a single binary output:
+A perceptron takes several binary inputs, $x_1, x_2, \ldots$ and produces a single binary output:
 ![alt text](http://neuralnetworksanddeeplearning.com/images/tikz0.png)
 
-So in this example, the perceptron has 3 inputs ![img2](http://www.sciweavers.org/tex2img.php?eq=x_1%2C%20x_2%2C%20x_3&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0). The importance of these inputs to the corresponding output are denoted as weights ![img3](http://www.sciweavers.org/tex2img.php?eq=w_1%2Cw_2%2C%5Cldots&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0) which are real numbers. The neuron then outputs 0 or 1 which is determined by whether the weighted sum ![img4](http://www.sciweavers.org/tex2img.php?eq=%5Csum_j%20w_j%20x_j&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0) is less than or greater than some threshold value. Algebraically:
+So in this example, the perceptron has 3 inputs $x_1, x_2, x_3$. The importance of these inputs to the corresponding output are denoted as weights $w_1,w_2,\ldots$ which are real numbers. The neuron then outputs 0 or 1 which is determined by whether the weighted sum $\sum_j w_j x_j$ is less than or greater than some threshold value. Algebraically:
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=%5Cbegin%7Beqnarray%7D%0A%20%20%5Cmbox%7Boutput%7D%20%26%20%3D%20%26%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Bll%7D%0A%20%20%20%20%20%200%20%26%20%5Cmbox%7Bif%20%7D%20%5Csum_j%20w_j%20x_j%20%5Cleq%20%5Cmbox%7B%20threshold%7D%20%5C%5C%0A%20%20%20%20%20%201%20%26%20%5Cmbox%7Bif%20%7D%20%5Csum_j%20w_j%20x_j%20%3E%20%5Cmbox%7B%20threshold%7D%0A%20%20%20%20%20%20%5Cend%7Barray%7D%20%5Cright.%0A%5Ctag%7B1%7D%5Cend%7Beqnarray%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+$\begin{eqnarray}
+  \mbox{output} & = & \left\{ \begin{array}{ll}
+      0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
+      1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
+      \end{array} \right.
+\tag{1}\end{eqnarray}$
