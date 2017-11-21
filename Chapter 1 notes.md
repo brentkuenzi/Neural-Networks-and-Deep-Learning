@@ -40,3 +40,9 @@ Thus we rewrite our perceptron rule:
     \end{array}
   \right.
 \tag{2}\end{eqnarray}
+
+Perceptron bias is essentially a measure of how easy it is to get a perceptron to output a 1 or *fire* to put it in terms of a biological neuron.
+
+Perceptrons can also be used to compute logicals (`AND`, `OR`, `NAND`). Example:
+![img](http://neuralnetworksanddeeplearning.com/images/tikz2.png)
+This perceptron has each weight as -2 and an overall bias of 3. So if we input 00 then it produces 1 since `(-2)*0 + (-2)*0 + 3 = 3` is positive. Inputs of 10 or 01 also result in 1 but 11 outputs 0 because the result is negative (walk through math on your own). This is therefore a `NAND` gate.
