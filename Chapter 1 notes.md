@@ -18,3 +18,25 @@ So in this example, the perceptron has 3 inputs $x_1, x_2, x_3$. The importance 
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
       \end{array} \right.
 \tag{1}\end{eqnarray}
+
+So essentially a perceptron makes decisions by weighing the *evidence*.
+
+Perceptrons can become more complex with multiple layers:
+![img](http://neuralnetworksanddeeplearning.com/images/tikz1.png)
+where the first layer makes 3 simple decisions by weighing input evidence and the second layer makes decisions by weighing up the results form the first layer of decisions. Even though it looks like these perceptrons have multiple outputs, they dont. They still have a single output but this output is being used as input to multiple perceptrons.
+
+#### Simplifying perceptrons
+We can simplify the perceptron described above by doing two things:
+1) Rewrite the weighted sum equation above as the dot product w $\cdot x \equiv \sum_j w_j x_j$ where *w* and *x* are vectors whose components are the weights and inputs, respectively.
+2) Move the threshold to the other side of the inequality and replace it with the perceptron bias $b \equiv
+-\mbox{threshold}$
+
+Thus we rewrite our perceptron rule:
+\begin{eqnarray}
+  \mbox{output} = \left\{
+    \begin{array}{ll}
+      0 & \mbox{if } w\cdot x + b \leq 0 \\
+      1 & \mbox{if } w\cdot x + b > 0
+    \end{array}
+  \right.
+\tag{2}\end{eqnarray}
