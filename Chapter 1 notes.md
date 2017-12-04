@@ -28,7 +28,7 @@ Perceptrons can become more complex with multiple layers:
 
 where the first layer makes 3 simple decisions by weighing input evidence and the second layer makes decisions by weighing up the results form the first layer of decisions. Even though it looks like these perceptrons have multiple outputs, they dont. They still have a single output but this output is being used as input to multiple perceptrons.
 
-#### Simplifying perceptrons
+### Simplifying perceptrons
 We can simplify the perceptron described above by doing two things:
 1) Rewrite the weighted sum equation above as the dot product w $\cdot x \equiv \sum_j w_j x_j$ where *w* and *x* are vectors whose components are the weights and inputs, respectively.
 2) Move the threshold to the other side of the inequality and replace it with the perceptron bias $b \equiv
@@ -50,4 +50,26 @@ Perceptrons can also be used to compute logicals (`AND`, `OR`, `NAND`). Example:
 
 ![img](http://neuralnetworksanddeeplearning.com/images/tikz2.png)
 
-This perceptron has each weight as -2 and an overall bias of 3. So if we input 00 then it produces 1 since `(-2)*0 + (-2)*0 + 3 = 3` is positive. Inputs of 10 or 01 also result in 1 but 11 outputs 0 because the result is negative (walk through math on your own). This is therefore a `NAND` gate.
+This perceptron has each weight as -2 and an overall bias of 3. So if we input 00 then it produces 1 since `(-2)*0 + (-2)*0 + 3 = 3` is positive. Inputs of 10 or 01 also result in 1 but 11 outputs 0 because the result is negative (walk through math on your own). This is therefore a [`NAND`](https://en.wikipedia.org/wiki/NAND_gate) gate.
+
+`NAND` gates tend to be universal for computation because any computation can be built out of `NAND` gates.
+
+When drawing perceptrons, it is typical to include the *input layer* as so
+
+ ![img](http://neuralnetworksanddeeplearning.com/images/tikz6.png)
+
+### Sigmoid Neurons
+
+What we want is for a small change in the learned weights or biases to cause only a small change in the output from the network. This doesn't happen however when we use perceptrons. Small changes in weights or biases of any single perceptron an cause the output from that perceptron to completely flip. This makes it difficult to gradually modify the weights and biases so that the network gets closer to the desired behavior.
+
+Sigmoid neurons are one way to overcome this. They are similar to perceptrons but modified so that small changes in weights/biases only cause small output changes. So while perceptrons can take on values of 0 or 1, sigmoid neurons can take on any continous value, say 0.638. Sigmoid neurons also have weights for inputs $w_1, w_2, \ldots$ and bias $b$ like perceptrons but instead of output being equal to 0 or 1, it is now $\sigma(w \cdot x+b)$ where $\sigma$ is the sigmoid function defined as:
+
+$\begin{eqnarray}
+  \sigma(z) \equiv \frac{1}{1+e^{-z}}.
+\tag{3}\end{eqnarray}$
+
+
+You can rewrite this equation with inputs $x_1, x_2, \ldots$ as so:
+$\begin{eqnarray}
+  \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
+\tag{4}\end{eqnarray}$
