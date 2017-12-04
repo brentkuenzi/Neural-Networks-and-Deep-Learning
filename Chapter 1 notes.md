@@ -13,12 +13,12 @@ A perceptron takes several binary inputs, $x_1, x_2, \ldots$ and produces a sing
 
 So in this example, the perceptron has 3 inputs $x_1, x_2, x_3$. The importance of these inputs to the corresponding output are denoted as weights $w_1,w_2,\ldots$ which are real numbers. The neuron then outputs 0 or 1 which is determined by whether the weighted sum $\sum_j w_j x_j$ is less than or greater than some threshold value. Algebraically:
 
-\begin{eqnarray}
+$\begin{eqnarray}
   \mbox{output} & = & \left\{ \begin{array}{ll}
       0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
       \end{array} \right.
-\tag{1}\end{eqnarray}
+\tag{1}\end{eqnarray}$
 
 So essentially a perceptron makes decisions by weighing the *evidence*.
 
@@ -35,14 +35,14 @@ We can simplify the perceptron described above by doing two things:
 -\mbox{threshold}$
 
 Thus we rewrite our perceptron rule:
-\begin{eqnarray}
+$\begin{eqnarray}
   \mbox{output} = \left\{
     \begin{array}{ll}
       0 & \mbox{if } w\cdot x + b \leq 0 \\
       1 & \mbox{if } w\cdot x + b > 0
     \end{array}
   \right.
-\tag{2}\end{eqnarray}
+\tag{2}\end{eqnarray}$
 
 Perceptron bias is essentially a measure of how easy it is to get a perceptron to output a 1 or *fire* to put it in terms of a biological neuron.
 
