@@ -80,7 +80,7 @@ A sigmoid neuron has a shape like this:
 
 ![img](http://www.saedsayad.com/images/ANN_Sigmoid.png)
 
-Whereas a perceptron is actually a step function:
+Whereas a perceptron is actually a step function (note: these are examples of sigmoid and step functions as Github doesn't allow for code rendering in md):
 
 ![img](https://sebastianraschka.com/images/faq/diff-perceptron-adaline-neuralnet/3.png)
 
