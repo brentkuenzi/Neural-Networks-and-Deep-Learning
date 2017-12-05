@@ -76,9 +76,6 @@ $\begin{eqnarray}
 
 To understand the similarities between perceptrons and sigmoid neurons, lets supposed $z \equiv w \cdot x + b$ is a large positive number. Then $e^{-z} \approx 0$ and so $\sigma(z) \approx 1$. So when $z$ is large and positive, the output from the sigmoid is about 1 just like the perceptron. The oppositie is true if $z$ is very neegative, then $\sigma(z) \approx 0$ just like a perceptron.
 
-{::nomarkdown}
-<p>
-<div id="sigmoid_graph"><a name="sigmoid_graph"></a></div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 function s(x) {return 1/(1+Math.exp(-x));}
@@ -136,5 +133,3 @@ graph.append("text")
         .style("font-size", "16px")
         .text("sigmoid function");
 </script>
-</p>
-{:/}
