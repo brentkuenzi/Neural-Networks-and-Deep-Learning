@@ -14,7 +14,7 @@ A perceptron takes several binary inputs, $x_1, x_2, \ldots$ and produces a sing
 So in this example, the perceptron has 3 inputs $x_1, x_2, x_3$. The importance of these inputs to the corresponding output are denoted as weights $w_1,w_2,\ldots$ which are real numbers. The neuron then outputs 0 or 1 which is determined by whether the weighted sum $\sum_j w_j x_j$ is less than or greater than some threshold value. Algebraically:
 
 $\begin{eqnarray}
-  \mbox{output} & = & { \begin{array}{ll}
+  \mbox{output} & = & \begin{array}{ll}
       0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
       \end{array}.
