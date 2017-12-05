@@ -14,10 +14,10 @@ A perceptron takes several binary inputs, $x_1, x_2, \ldots$ and produces a sing
 So in this example, the perceptron has 3 inputs $x_1, x_2, x_3$. The importance of these inputs to the corresponding output are denoted as weights $w_1,w_2,\ldots$ which are real numbers. The neuron then outputs 0 or 1 which is determined by whether the weighted sum $\sum_j w_j x_j$ is less than or greater than some threshold value. Algebraically:
 
 $\begin{eqnarray}
-  \mbox{output} & = & \biggl{ \begin{array}{ll}
+  \mbox{output} & = & \left\{ \begin{array}{ll}
       0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
-      \end{array} \biggr\}.
+      \end{array} \right.
 \tag{1}\end{eqnarray}$
 
 So essentially a perceptron makes decisions by weighing the *evidence*.
@@ -73,3 +73,66 @@ You can rewrite this equation with inputs $x_1, x_2, \ldots$ as so:
 $\begin{eqnarray}
   \frac{1}{1+\exp(-\sum_j w_j x_j-b)}.
 \tag{4}\end{eqnarray}$
+
+To understand the similarities between perceptrons and sigmoid neurons, lets supposed $z \equiv w \cdot x + b$ is a large positive number. Then $e^{-z} \approx 0$ and so $\sigma(z) \approx 1$. So when $z$ is large and positive, the output from the sigmoid is about 1 just like the perceptron. The oppositie is true if $z$ is very neegative, then $\sigma(z) \approx 0$ just like a perceptron.
+
+<p>
+<div id="sigmoid_graph"><a name="sigmoid_graph"></a></div>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+function s(x) {return 1/(1+Math.exp(-x));}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d),
+        y: s(x1(d))};
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0, 1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select("#sigmoid_graph")
+    .append("svg")
+    .attr("width", width + m[1] + m[3])
+    .attr("height", height + m[0] + m[2])
+    .append("g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient("bottom")
+graph.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0, " + height + ")")
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient("left")
+                  .ticks(5)
+graph.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+graph.append("path").attr("d", line(data));
+graph.append("text")
+     .attr("class", "x label")
+     .attr("text-anchor", "end")
+     .attr("x", width/2)
+     .attr("y", height+35)
+     .text("z");
+graph.append("text")
+        .attr("x", (width / 2))
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text("sigmoid function");
+</script>
+</p>
