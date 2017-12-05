@@ -17,7 +17,7 @@ $\begin{eqnarray}
   \mbox{output} & = & \biggl\{ \begin{array}{ll}
       0 & \mbox{if } \sum_j w_j x_j \leq \mbox{ threshold} \\
       1 & \mbox{if } \sum_j w_j x_j > \mbox{ threshold}
-      \end{array} \biggr.
+      \end{array} \biggr\}.
 \tag{1}\end{eqnarray}$
 
 So essentially a perceptron makes decisions by weighing the *evidence*.
