@@ -75,3 +75,24 @@ $\begin{eqnarray}
 \tag{4}\end{eqnarray}$
 
 To understand the similarities between perceptrons and sigmoid neurons, lets supposed $z \equiv w \cdot x + b$ is a large positive number. Then $e^{-z} \approx 0$ and so $\sigma(z) \approx 1$. So when $z$ is large and positive, the output from the sigmoid is about 1 just like the perceptron. The oppositie is true if $z$ is very neegative, then $\sigma(z) \approx 0$ just like a perceptron.
+
+A sigmoid neuron has a shape like this:
+
+![img](http://www.saedsayad.com/images/ANN_Sigmoid.png)
+
+Whereas a perceptron is actually a step function:
+
+![img](https://sebastianraschka.com/images/faq/diff-perceptron-adaline-neuralnet/3.png)
+
+The smoothness of $\sigma$ means that small changes $\Delta w_j$ in the weights and $\Delta b$ in the bias will produce a small change $\Delta output$ in the output from the neuron. In fact, calculus tells us that $\Delta output$ is well approximated by:
+
+$\begin{eqnarray}
+  \Delta \mbox{output} \approx \sum_j \frac{\partial \, \mbox{output}}{\partial w_j}
+  \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b,
+\tag{5}\end{eqnarray}$
+
+where the sum is over all the weights, $w_j$, and $\delta output / delta w_j$ and $\delta output / \delta b$ denote partial derivatives of the output with respect to $w_j$ and $b$, respectively.
+
+In other words, $\Delta output$ is a linear function of the changes $\Delta w_j$ and $\Delta b$ in the weights and bias.
+
+### The architecture of neural networks
